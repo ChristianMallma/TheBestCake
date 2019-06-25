@@ -1,0 +1,74 @@
+.logo-img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block; 
+    height: 220px;
+}
+
+.site-heading{
+    padding: 0%;
+    margin: 1%;    
+}
+
+.nav-link{
+    font-family: 'Righteous', cursive;
+    text-shadow: 0.5px 0.5px blanchedalmond;
+}
+
+.navbar{
+    background-color: rgb(117, 76, 41);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    
+    
+}
+
+.social-icons{
+    height: 30px;
+    background-color: bisque;
+    border-radius: 35%
+    
+}
+
+.li-social{
+    float: right;
+    padding: 0%;
+    margin: 2%;
+    
+}
+
+.footer-list{
+    list-style: none;
+    text-align: left;
+}
+
+.footer-title{
+    font-size: 20px;
+    font-style: bold;
+    color:rgb(253, 199, 177);
+    font-family: 'Mali', cursive;
+    padding: 2px;
+    
+}
+
+.footer-link{
+    text-decoration: none;
+    color: bisque;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-p{
+    color: bisque;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid-footer{
+    background-color: rgb(117, 76, 41);
+    padding: 5px;
+}
+
+.footer{
+    background-color: rgb(117, 76, 41);
+    border: 0;
+}

@@ -1,0 +1,14 @@
+ID: admin
+PSS: admin2019
+
+Empleado:
+ID: empleado1
+PSS: emple123456
+
+Clientes:
+ID: Lizbeth
+PSS: lizi1234
+
+Cuenta de Mailtrap:
+correo: christianmichelmallma@gmail.com
+pss: m4a4rxrc

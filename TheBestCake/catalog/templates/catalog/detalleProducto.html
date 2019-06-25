@@ -1,0 +1,91 @@
+{% extends "core/base2.html" %}
+{% load static %}
+{% load l10n %}
+{% block content %}
+<link href="{% static 'core/css/materialize.css' %}" rel="stylesheet">
+<link href="{% static 'core/css/materialize.min.css' %}" rel="stylesheet">
+<link href="{% static 'core/css/nouislider.css' %}" rel="stylesheet">
+<link href="{% static 'core/css/tienda.css' %}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="container">
+    <center>    
+        <h1>
+            <span class="new badge" data-badge-caption="">S/ {{object.price}}</span>
+            {{object.name}}
+        </h1>
+    </center>
+
+        <div class="slider">
+            <ul class="slides">
+                {% for imagen in object.producto_imagenes.all reversed %}
+                <li>
+                    <img src="{{imagen.imagen.url}}"> 
+                    <div class="caption center-align">
+                        <h5 class="light grey-text text-lighten-3" >{{imagen.descripcion}}</h5>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    <br>
+    <div class="col s8 z-depth-1">
+        <center>
+            {{object.description|linebreaks}}
+        </center>
+    </div>
+    <br>
+
+    <ul class="collection">
+        
+        {% for comentario in object.producto_comentarios.all %}
+            <li class="collection-item">
+                <span class="title">Mensaje:</span>
+                <p>
+                    {{comentario.comentario}}
+                    <br>
+                    {{comentario.usuario}} -  {{comentario.created}}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+
+    <form class="col s12" method="POST" action="{% url 'crearComentario' %}">
+        {% csrf_token %}
+        <div class="input-field col s6">
+            <input placeholder="Nombre" id="name" type="text" class="validate" name="usuario">
+            <label for="name"></label>
+        </div>
+
+        <input type="hidden" name="producto" value="{{object.pk}}">
+
+        <div class="row">
+            <div class="input-field col s10">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="icon_prefix2" class="materialize-textarea" name="comentario"></textarea>
+                <label for="icon_prefix2">Comentario</label>
+            </div>
+            <div class="input-field col s2">
+                    <button class="waves-effect waves-light btn-large">
+                        Comentar
+                    </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class="fixed-action-btn" style="bottom: 90px;">
+    <form action="{% url 'aniadirCarrito' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="usuario" value="{{request.user.pk}}">
+        <input type="hidden" name="producto" value="{{object.pk}}">
+        <input type="hidden" name="price" value="{{object.price|unlocalize}}">
+
+        <button class="btn-floating btn-large red pulse">
+            <i class="large material-icons">add_shopping_cart</i>
+        </button>
+    </form>
+</div>
+{% endblock content %}
